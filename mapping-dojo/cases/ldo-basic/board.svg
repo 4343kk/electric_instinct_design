@@ -1,0 +1,62 @@
+<svg viewBox="0 0 980 520" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .component { cursor: pointer; }
+    .component rect, .component circle, .component ellipse, .component path, .component line { fill: #fff; stroke: #333; stroke-width: 2; }
+    .component text { font-family: sans-serif; font-size: 16px; fill: #111; pointer-events: none; }
+    .net path { fill: none; stroke-width: 6; stroke-linecap: round; opacity: 0.6; }
+    .pin circle, .pin rect { fill: #ddd; stroke: #333; stroke-width: 2; cursor: crosshair; }
+    .hide-labels .component text { display: none; }
+  </style>
+  <rect x="0" y="0" width="980" height="520" fill="#f7f7f7"/>
+
+  <!-- 网络走线 -->
+  <g class="net" data-net="GND"><path d="M80 470 H900" stroke="#22c55e"/></g>
+  <g class="net" data-net="VIN"><path d="M150 190 H310 M310 190 V250 M310 250 H390" stroke="#ef4444"/></g>
+  <g class="net" data-net="VOUT"><path d="M560 250 H670 M670 250 V200 M670 200 H760" stroke="#f97316"/></g>
+
+  <!-- J1：DC 插座 -->
+  <g class="component" data-component="J1">
+    <rect x="50" y="130" width="120" height="120" rx="14"/>
+    <circle cx="110" cy="190" r="28"/>
+    <text x="70" y="115">J1</text>
+    <g class="pin" data-component="J1" data-pin="VIN" data-net="VIN"><circle cx="150" cy="190" r="7"/></g>
+    <g class="pin" data-component="J1" data-pin="GND" data-net="GND"><circle cx="110" cy="250" r="7"/></g>
+  </g>
+
+  <!-- C1：电解电容 -->
+  <g class="component" data-component="C1">
+    <circle cx="310" cy="310" r="46"/>
+    <path d="M275 275 L345 275" stroke="#333" stroke-width="4"/>
+    <text x="285" y="395">C1</text>
+    <g class="pin" data-component="C1" data-pin="POS" data-net="VIN"><circle cx="310" cy="255" r="6"/></g>
+    <g class="pin" data-component="C1" data-pin="NEG" data-net="GND"><circle cx="310" cy="365" r="6"/></g>
+  </g>
+
+  <!-- U1：TO-220 稳压器 -->
+  <g class="component" data-component="U1">
+    <rect x="410" y="210" width="130" height="80" rx="8"/>
+    <rect x="430" y="185" width="90" height="25"/>
+    <text x="445" y="170">U1</text>
+    <g class="pin" data-component="U1" data-pin="VIN" data-net="VIN"><rect x="385" y="240" width="25" height="14"/></g>
+    <g class="pin" data-component="U1" data-pin="GND" data-net="GND"><rect x="460" y="290" width="25" height="14"/></g>
+    <g class="pin" data-component="U1" data-pin="VOUT" data-net="VOUT"><rect x="540" y="240" width="25" height="14"/></g>
+  </g>
+
+  <!-- C2：陶瓷电容 -->
+  <g class="component" data-component="C2">
+    <ellipse cx="670" cy="310" rx="28" ry="40"/>
+    <text x="650" y="390">C2</text>
+    <g class="pin" data-component="C2" data-pin="1" data-net="VOUT"><circle cx="670" cy="250" r="6"/></g>
+    <g class="pin" data-component="C2" data-pin="2" data-net="GND"><circle cx="670" cy="360" r="6"/></g>
+  </g>
+
+  <!-- R1：轴向电阻 -->
+  <g class="component" data-component="R1">
+    <rect x="780" y="180" width="100" height="34" rx="10"/>
+    <line x1="740" y1="197" x2="780" y2="197"/>
+    <line x1="880" y1="197" x2="930" y2="197"/>
+    <text x="805" y="165">R1</text>
+    <g class="pin" data-component="R1" data-pin="1" data-net="VOUT"><circle cx="740" cy="197" r="6"/></g>
+    <g class="pin" data-component="R1" data-pin="2" data-net="GND"><circle cx="930" cy="197" r="6"/></g>
+  </g>
+</svg>
