@@ -1,0 +1,2 @@
+# electric_instinct_design
+电路映射直觉训练台设计
