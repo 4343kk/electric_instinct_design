@@ -1,0 +1,35 @@
+{
+  "id": "ldo-basic",
+  "title": "LDO 基础电源映射训练",
+  "assets": { "board": "board.svg", "schematic": "schematic.svg" },
+  "components": [
+    { "id": "J1", "package": "DC_JACK", "value": "DC 5V" },
+    { "id": "C1", "package": "ELECTROLYTIC", "value": "10uF" },
+    { "id": "U1", "package": "TO220", "value": "LDO 3.3V" },
+    { "id": "C2", "package": "CERAMIC_DISC", "value": "100nF" },
+    { "id": "R1", "package": "AXIAL_RESISTOR", "value": "1k" }
+  ],
+  "nets": [
+    { "id": "VIN", "name": "5V", "color": "#ef4444" },
+    { "id": "VOUT", "name": "3V3", "color": "#f97316" },
+    { "id": "GND", "name": "GND", "color": "#22c55e" }
+  ],
+  "reverse": {
+    "targets": [
+      { "id": "J1", "options": ["J1", "U1", "C1", "R1"], "hint": "体积最大，有机械接口特征。" },
+      { "id": "C1", "options": ["C1", "C2", "U1", "J1"], "hint": "输入侧大电容，常见电解电容形态。" },
+      { "id": "U1", "options": ["U1", "C1", "C2", "R1"], "hint": "三脚功率/稳压器件，连接输入和输出。" },
+      { "id": "C2", "options": ["C2", "C1", "R1", "J1"], "hint": "输出侧小电容，陶瓷材质。" },
+      { "id": "R1", "options": ["R1", "C2", "U1", "J1"], "hint": "轴向两端器件，色环或圆柱本体。" }
+    ]
+  },
+  "trace": {
+    "steps": [
+      { "task": "点击 5V 输入网络 VIN", "expected": { "type": "net", "id": "VIN" } },
+      { "task": "点击 U1 的 VIN 引脚", "expected": { "type": "pin", "component": "U1", "pin": "VIN" } },
+      { "task": "点击 U1 的 VOUT 引脚", "expected": { "type": "pin", "component": "U1", "pin": "VOUT" } },
+      { "task": "点击 3V3 输出网络 VOUT", "expected": { "type": "net", "id": "VOUT" } },
+      { "task": "点击 GND 网络，确认回流", "expected": { "type": "net", "id": "GND" } }
+    ]
+  }
+}

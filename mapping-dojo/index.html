@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>电路映射直觉训练台</title>
+  <link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <strong>电路映射直觉训练台 (Mapping Dojo)</strong>
+    <nav>
+      <button data-module="dual" class="tab active">双视图联动</button>
+      <button data-module="reverse" class="tab">逆向抄板</button>
+      <button data-module="trace" class="tab">网络追踪</button>
+    </nav>
+  </header>
+  <main>
+    <section id="module-dual" class="view split">
+      <div id="schematic-view" class="board"></div>
+      <div id="board-view" class="board"></div>
+    </section>
+    <section id="module-reverse" class="view split" hidden>
+      <div id="reverse-board" class="board"></div>
+      <aside id="reverse-panel" class="panel"></aside>
+    </section>
+    <section id="module-trace" class="view split" hidden>
+      <div id="trace-board" class="board"></div>
+      <aside id="trace-panel" class="panel"></aside>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
